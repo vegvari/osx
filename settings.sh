@@ -43,6 +43,10 @@ defaults write com.apple.dock expose-animation-duration -int 0;
 echo "Dock - turn off dashboard";
 defaults write com.apple.dashboard enabled-state -int 1;
 
+echo "Dock - turn off launchpad animation";
+defaults write com.apple.dock springboard-show-duration -int 0;
+defaults write com.apple.dock springboard-hide-duration -int 0;
+
 echo "Dock - killing process";
 killall Dock;
 sleep 3;
