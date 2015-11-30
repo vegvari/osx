@@ -39,11 +39,11 @@ defaults write com.apple.dock wvous-tl-modifier -int 0;
 echo "Dock - turn off expose animation";
 defaults write com.apple.dock expose-animation-duration -int 0;
 
-echo "Dock - killing process";
-killall Dock;
-
 echo "Dock - remove apps";
-defaults write com.apple.dock persistent-apps -array;
+defaults delete com.apple.dock persistent-apps;
 
 echo "Dock - remove other stuff";
-defaults write com.apple.dock persistent-others -array;
+defaults delete com.apple.dock persistent-others;
+
+echo "Dock - killing process";
+killall Dock;
