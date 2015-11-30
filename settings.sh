@@ -72,6 +72,10 @@ sudo defaults write /Library/Preferences/com.apple.iokit.AmbientLightSensor "Aut
 echo "Dock - reset to default"
 defaults delete com.apple.dock
 
+echo "Dock - killing process"
+killall Dock
+sleep 3
+
 echo "Dock - turn on autohide"
 defaults write com.apple.dock autohide -int 1
 
@@ -113,11 +117,19 @@ defaults write com.apple.dock springboard-hide-duration -int 0
 echo "Dock - translucent icons for hidden apps"
 defaults write com.apple.dock showhidden -bool true
 
+echo "Dock - killing process"
+killall Dock
+sleep 3
+
 echo "Dock - remove apps"
 defaults delete com.apple.dock persistent-apps
 
 echo "Dock - remove other stuff"
 defaults delete com.apple.dock persistent-others
+
+echo "Dock - killing process"
+killall Dock
+sleep 3
 
 ################################################################################
 # Finder
