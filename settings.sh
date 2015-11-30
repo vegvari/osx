@@ -1,4 +1,11 @@
 ################################################################################
+# Globals
+################################################################################
+
+echo "Globals - turn off press and hold";
+defaults write -g ApplePressAndHoldEnabled -bool false;
+
+################################################################################
 # Dock
 ################################################################################
 
@@ -47,8 +54,8 @@ echo "Dock - turn off launchpad animation";
 defaults write com.apple.dock springboard-show-duration -int 0;
 defaults write com.apple.dock springboard-hide-duration -int 0;
 
-echo "Dock - Translucent icons for hidden apps";
-defaults write com.apple.dock showhidden -bool YES;
+echo "Dock - translucent icons for hidden apps";
+defaults write com.apple.dock showhidden -bool true;
 
 echo "Dock - killing process";
 killall Dock;
