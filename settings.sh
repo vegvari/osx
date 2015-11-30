@@ -7,6 +7,7 @@ defaults delete com.apple.dock;
 
 echo "Dock - killing process";
 killall Dock;
+sleep 3;
 
 echo "Dock - turn on autohide";
 defaults write com.apple.dock autohide -int 1;
@@ -39,6 +40,10 @@ defaults write com.apple.dock wvous-tl-modifier -int 0;
 echo "Dock - turn off expose animation";
 defaults write com.apple.dock expose-animation-duration -int 0;
 
+echo "Dock - killing process";
+killall Dock;
+sleep 3;
+
 echo "Dock - remove apps";
 defaults delete com.apple.dock persistent-apps;
 
@@ -47,3 +52,6 @@ defaults delete com.apple.dock persistent-others;
 
 echo "Dock - killing process";
 killall Dock;
+sleep 3;
+
+echo "Dock - done";
