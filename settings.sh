@@ -29,8 +29,8 @@ defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 echo "Globals - enabling full keyboard access for all controls (enable Tab in modal dialogs, menu windows, etc.)"
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
-echo "Globals - setting a blazingly fast keyboard repeat rate"
-defaults write NSGlobalDomain KeyRepeat -int 0
+echo "Globals - setting keyboard repeat rate"
+defaults write NSGlobalDomain KeyRepeat -int 1
 
 echo "Globals - disable auto-correct"
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
@@ -47,8 +47,8 @@ sudo rm /Private/var/vm/sleepimage
 sudo touch /Private/var/vm/sleepimage
 sudo chflags uchg /Private/var/vm/sleepimage
 
-echo "Energy Saver - disable system-wide resume"
-defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
+# echo "Energy Saver - disable system-wide resume"
+# defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 
 echo "Energy Saver - speeding up wake from sleep to 24 hours from an hour"
 sudo pmset -a standbydelay 86400
