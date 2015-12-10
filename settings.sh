@@ -47,9 +47,6 @@ sudo rm /Private/var/vm/sleepimage
 sudo touch /Private/var/vm/sleepimage
 sudo chflags uchg /Private/var/vm/sleepimage
 
-# echo "Energy Saver - disable system-wide resume"
-# defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
-
 echo "Energy Saver - speeding up wake from sleep to 24 hours from an hour"
 sudo pmset -a standbydelay 86400
 
@@ -69,12 +66,8 @@ sudo defaults write /Library/Preferences/com.apple.iokit.AmbientLightSensor "Aut
 # Dock
 ################################################################################
 
-echo "Dock - reset to default"
-defaults delete com.apple.dock
-
-echo "Dock - killing process"
-killall Dock
-sleep 3
+echo "Dock - turn off icon bouncing"
+defaults write com.apple.dock no-bouncing -bool true
 
 echo "Dock - turn on autohide"
 defaults write com.apple.dock autohide -int 1
@@ -116,16 +109,6 @@ defaults write com.apple.dock springboard-hide-duration -int 0
 
 echo "Dock - translucent icons for hidden apps"
 defaults write com.apple.dock showhidden -bool true
-
-echo "Dock - killing process"
-killall Dock
-sleep 3
-
-echo "Dock - remove apps"
-defaults delete com.apple.dock persistent-apps
-
-echo "Dock - remove other stuff"
-defaults delete com.apple.dock persistent-others
 
 echo "Dock - killing process"
 killall Dock
@@ -202,32 +185,3 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 echo "Time Machine - disable local Time Machine backups"
 hash tmutil &> /dev/null && sudo tmutil disablelocal
-
-################################################################################
-# Transmission
-################################################################################
-
-echo "Transmission - setting up an incomplete downloads folder in Downloads"
-defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
-defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Downloads/Incomplete"
-
-echo "Transmission - setting auto-add folder to be Downloads"
-defaults write org.m0k.transmission AutoImportDirectory -string "${HOME}/Downloads"
-
-echo "Transmission - don't prompt for confirmation before downloading"
-defaults write org.m0k.transmission DownloadAsk -bool false
-
-echo "Transmission - trash original torrent files after adding them"
-defaults write org.m0k.transmission DeleteOriginalTorrent -bool true
-
-echo "Transmission - hiding the donate message"
-defaults write org.m0k.transmission WarningDonate -bool false
-
-echo "Transmission - hiding the legal disclaimer"
-defaults write org.m0k.transmission WarningLegal -bool false
-
-echo "Transmission - setting up the best block list"
-defaults write org.m0k.transmission EncryptionRequire -bool true
-defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
-defaults write org.m0k.transmission BlocklistNew -bool true
-defaults write org.m0k.transmission BlocklistURL -string "http://john.bitsurge.net/public/biglist.p2p.gz"
